@@ -33,16 +33,15 @@ export const App = () => {
     
     let reader = new FileReader();
 console.log(files);
-    reader.onload = (event) => {console.log(event.target.result)}
-    
-    // console.log(reader.onload(e));
+    reader.onload = (event) => {setFinal(event.target.result)}
+   console.log(final);
 
-    const res = reader.readAsDataURL(files[0]);//!!!!!!!!!!!!!!!!оставить
+     reader.readAsDataURL(files[0]);//!!!!!!!!!!!!!!!!оставить
     
   
   //  const result= reader.readAsDataURL(files[0]);
   
-console.log(res.split("base64,"));
+// console.log(res.split("base64,"));
 
 // console.log(decodeURIComponent(atob(final.split("base64,")[1])));
 
