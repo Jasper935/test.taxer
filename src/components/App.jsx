@@ -32,26 +32,37 @@ export const App = () => {
     const files = e.dataTransfer.files
     
     let reader = new FileReader();
+    // reader.readAsArrayBuffer(files[0])
+    reader.readAsText(files[0])
 console.log(files);
     reader.onload = (event) => {setFinal(event.target.result)}
-   console.log(final);
-
-     reader.readAsDataURL(files[0]);//!!!!!!!!!!!!!!!!оставить
+   
+   if(final){
+    console.log(final);
+    console.log(ASN1.decode(final));
+    console.log(decodeURIComponent(atob("ZGZnZGZkZmdkZmRmZw==")));
+    return
+   } else{
+    console.log('oops');
+   }
+   
+  // JSON.parse(atob("0YDRg9C00LTRiQ=="))
+     ;//!!!!!!!!!!!!!!!!оставить
     
   
   //  const result= reader.readAsDataURL(files[0]);
   
 // console.log(res.split("base64,"));
 
-// console.log(decodeURIComponent(atob(final.split("base64,")[1])));
+
 
     // dispatch(addCertificate(files))
-    // const result = ASN1.decode(dd);
-    // if (result.typeName(result) !== 'SEQUENCE') {
-    //   // eslint-disable-next-line no-throw-literal
-    //   throw 'Неправильна структура конверта сертифіката (очікується SEQUENCE)';
-    // }
-    // console.log(result);
+    const result = ASN1.decode(final);
+    if (result.typeName(result) !== 'SEQUENCE'){
+      // eslint-disable-next-line no-throw-literal
+      throw 'Неправильна структура конверта сертифіката (очікується SEQUENCE)';
+    }
+    console.log(result);
     // console.log(result);
   };
 
