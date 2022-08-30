@@ -1,0 +1,8 @@
+.backdrop {
+  padding: 100px 50px;
+  display: flex;
+ 
+  justify-content: center;
+  
+  background-color: white;
+}

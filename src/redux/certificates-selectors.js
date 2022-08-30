@@ -1,0 +1,1 @@
+export const getCertificates = state=> state.certificates.certificatesList 
